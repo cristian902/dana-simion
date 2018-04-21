@@ -111,7 +111,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 
 	/*Enqueue resources for the control*/
 	public function enqueue() {
-		wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/inc/customizer/customizer-controls/customizer-repeater/css/font-awesome.min.css', array(), CUSTOMIZER_REPEATER_VERSION );
+		wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/inc/vendors/fontawesome/font-awesome.min.css', array(), CUSTOMIZER_REPEATER_VERSION );
 
 		wp_enqueue_style( 'customizer-repeater-admin-stylesheet', get_template_directory_uri().'/inc/customizer/customizer-controls/customizer-repeater/css/admin-style.css', array(), CUSTOMIZER_REPEATER_VERSION );
 
