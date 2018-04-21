@@ -22,37 +22,56 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'danasimion' ); ?></a>
-
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$danasimion_description = get_bloginfo( 'description', 'display' );
-			if ( $danasimion_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $danasimion_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <div class="site-branding">
+                <?php the_custom_logo(); ?>
+                <?php
+                if ( is_front_page() && is_home() ) { ?>
+                    <h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+                                              rel="home"><?php bloginfo( 'name' ); ?></a></h1>
+	                <?php
+                } else { ?>
+                    <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>"
+                                             rel="home"><?php bloginfo( 'name' ); ?></a></p>
+	                <?php
+                }
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'danasimion' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+                $danasimion_description = get_bloginfo( 'description', 'display' );
+                if ( $danasimion_description || is_customize_preview() ) {
+                    ?>
+                    <p class="site-description">
+                        <?php echo $danasimion_description; /* WPCS: xss ok. */ ?></p>
+                    <?php
+                }
+                ?>
+
+                </div>
+                <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <?php
+                $header_contact_content = get_theme_mod('header_contact_content');
+                $container_class = 'collapse navbar-collapse';
+                if( !empty( $header_contact_content ) ){
+                    $container_class .= ' has-content-above';
+                } ?>
+                <div class="<?php echo esc_attr($container_class) ?>" id="navbar9">
+                <?php
+                do_action('before_header_ul');
+                wp_nav_menu( array(
+	                'theme_location'	=> 'menu-1',
+	                'depth'				=> 2, // 1 = with dropdowns, 0 = no dropdowns.
+	                'container'			=> false,
+	                'menu_class'		=> 'navbar-nav ml-auto',
+	                'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
+	                'walker'			=> new WP_Bootstrap_Navwalker()
+                ) );
+                ?>
+                </div>
+            </div>
+        </nav>
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

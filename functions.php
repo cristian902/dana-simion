@@ -7,6 +7,9 @@
  * @package danasimion
  */
 
+define('DANASIMION_VERSION', '1.0.0');
+define('DANASIMION_PHPINC', get_template_directory_uri() . '/inc/');
+
 if ( ! function_exists( 'danasimion_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -120,11 +123,18 @@ add_action( 'widgets_init', 'danasimion_widgets_init' );
  * Enqueue scripts and styles.
  */
 function danasimion_scripts() {
+
+	wp_enqueue_style( 'bootstrap-style', DANASIMION_PHPINC . 'vendors/bootstrap/css/bootstrap.min.css', array(), DANASIMION_VERSION);
+
+	wp_enqueue_style( 'fontawesome-style', DANASIMION_PHPINC . 'vendors/fontawesome/font-awesome.min.css', array(), DANASIMION_VERSION );
+
 	wp_enqueue_style( 'danasimion-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'danasimion-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'jquery-bootstrap', DANASIMION_PHPINC . 'vendors/bootstrap/js/bootstrap.min.js', array('jquery'), DANASIMION_VERSION );
 
-	wp_enqueue_script( 'danasimion-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
+	wp_enqueue_script( 'danasimion-navigation', get_template_directory_uri() . '/js/navigation.js', array(), DANASIMION_VERSION, true );
+
+	wp_enqueue_script( 'danasimion-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), DANASIMION_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -150,7 +160,7 @@ require get_template_directory() . '/inc/template-functions.php';
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+require get_template_directory() . '/inc/customizer/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
@@ -159,3 +169,53 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+/**
+ * Load Bootstrap navwalker.
+ */
+require get_template_directory() . '/inc/vendors/bootstrap/class-wp-bootstrap-navwalker.php';
+
+
+
+/**
+ * Display header contact boxes before menu.
+ */
+function danasinion_display_header_contact(){
+	$header_contact_content = get_theme_mod('header_contact_content');
+	if( empty($header_contact_content) ){
+		return;
+	}
+
+	$header_contact_content_decoded = json_decode($header_contact_content, true);
+	if( empty($header_contact_content_decoded) ){
+		return;
+	}
+
+	echo '<div class="content-above-nav-menu w-100">';
+	$i = 1;
+	foreach ($header_contact_content_decoded as $contact_box){
+		$title = $contact_box['title'];
+		$text = $contact_box['text'];
+		$icon = $contact_box['icon_value'];
+		echo '<div class="header-box-item float-md-right d-none d-md-block">';
+		if( !empty($icon) ){
+			echo '<div class="header-contact-icon">';
+			echo '<i class="fa '. esc_attr($icon) . '"></i>';
+			echo '</div>';
+		}
+		if(!empty($title) || !empty($text)){
+			echo '<div class="header-contact-content">';
+				echo '<p class="header-contact-title">';
+				echo  wp_kses_post($title);
+				echo '</p>';
+				echo '<p class="header-contact-text">';
+				echo  wp_kses_post($text);
+				echo '</p>';
+
+			echo '</div>';
+		}
+		echo '</div>';
+	}
+	echo '</div>';
+
+}
+add_action('before_header_ul','danasinion_display_header_contact');

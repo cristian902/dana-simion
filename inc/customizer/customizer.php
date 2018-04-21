@@ -4,6 +4,12 @@
  *
  * @package danasimion
  */
+define('DANASIMION_CUSTOMIZER_CONTROLS_PATH',get_template_directory() . '/inc/customizer/customizer-controls/');
+
+function danasimion_load_customize_classes( $wp_customize ) {
+	require_once DANASIMION_CUSTOMIZER_CONTROLS_PATH . 'customizer-repeater/functions.php';
+}
+add_action( 'customize_register', 'danasimion_load_customize_classes', 0 );
 
 /**
  * Add postMessage support for site title and description for the Theme Customizer.
@@ -25,8 +31,33 @@ function danasimion_customize_register( $wp_customize ) {
 			'render_callback' => 'danasimion_customize_partial_blogdescription',
 		) );
 	}
+
+
+	$wp_customize->add_panel( 'header_settings', array(
+		'title' => esc_html__('Header','danasimion'),
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_section( 'header_contact' , array(
+		'title'    => esc_html__( 'Header contact', 'danasimion' ),
+		'panel'    => 'header_settings',
+		'priority' => 30,
+	) );
+
+	$wp_customize->add_setting( 'header_contact_content', array(
+		'sanitize_callback' => 'customizer_repeater_sanitize'
+	));
+
+	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'header_contact_content', array(
+		'label'   => esc_html__('Contact box','customizer-repeater'),
+		'section' => 'header_contact',
+		'priority' => 1,
+		'customizer_repeater_icon_control' => true,
+		'customizer_repeater_title_control' => true,
+		'customizer_repeater_text_control' => true,
+	) ) );
 }
-add_action( 'customize_register', 'danasimion_customize_register' );
+add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
 /**
  * Render the site title for the selective refresh partial.
