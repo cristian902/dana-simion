@@ -1117,3 +1117,53 @@ object {
 	}
 
 }
+
+/*--------------------------------------------------------------
+# Jumbotron
+--------------------------------------------------------------*/
+
+.jumbotron{
+	position: relative;
+	overflow: hidden;
+	background: transparent;
+	color: #fff;
+}
+
+.jumbotron-layers{
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+}
+
+.jumbotron-layer1{
+	background-size: cover;
+	position: relative;
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.jumbotron-layer2{
+	background-image: url('inc/images/Mask.png');
+	position: absolute;
+	display: block;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.jumbotron-text{
+	padding-top: 90px;
+}
+
+.jumbotron-content{
+	padding: 90px;
+}
+.jumbotron-title, .jumbotron-subtitle {
+	text-transform: uppercase;
+}
