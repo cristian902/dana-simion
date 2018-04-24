@@ -45,6 +45,12 @@ if ( ! function_exists( 'danasimion_setup' ) ) :
 		 */
 		add_theme_support( 'post-thumbnails' );
 
+		/**
+		 * Enable category thumbnail.
+		 */
+		add_theme_support('category-thumbnails');
+
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'danasimion' ),
@@ -173,6 +179,11 @@ if ( defined( 'JETPACK__VERSION' ) ) {
  * Load Bootstrap navwalker.
  */
 require get_template_directory() . '/inc/vendors/bootstrap/class-wp-bootstrap-navwalker.php';
+
+/**
+ * Load Category thumbnail
+ */
+require get_template_directory() . '/inc/vendors/category-thumbnail/class-category-thumbnail.php';
 
 
 

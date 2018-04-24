@@ -16,4 +16,5 @@ get_header();
 ?>
 <?php
 	get_template_part( 'template-parts/frontpage', 'jumbotron' );
+	get_template_part( 'template-parts/frontpage', 'categories');
 get_footer();

@@ -108,6 +108,57 @@ function danasimion_customize_register( $wp_customize ) {
 		'section' => 'jumbotron_content', // Add a default or your own section
 		'priority' => 20,
 	) );
+
+	$wp_customize->add_panel( 'frontpage_sections', array(
+		'title' => esc_html__('Frontpage sections','danasimion'),
+		'priority' => 15,
+	) );
+
+	$wp_customize->add_section( 'categories_section' , array(
+		'title'    => esc_html__( 'Categories section', 'danasimion' ),
+		'panel'    => 'frontpage_sections',
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_setting( 'categories_section_title', array(
+		'default' => esc_html__('Themes', 'danasimion'),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'categories_section_title', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Categories title', 'danasimion' ),
+		'section' => 'categories_section', // Add a default or your own section
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_setting( 'categories_section_subtitle', array(
+		'default' => sprintf(esc_html__('Quisque %s fells.', 'danasimion'),
+			sprintf('<strong><i>%s</i></strong>', esc_html__('bibendum interdum', 'danasimion'))),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'categories_section_subtitle', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Categories subtitle', 'danasimion' ),
+		'section' => 'categories_section', // Add a default or your own section
+		'priority' => 15,
+	) );
+
+	$wp_customize->add_setting( 'categories_section_number', array(
+		'default' => 3,
+		'sanitize_callback' => 'absint',
+	) );
+
+	$wp_customize->add_control( 'categories_section_number', array(
+		'type' => 'number',
+		'label' => esc_html__( 'Number of items', 'danasimion' ),
+		'section' => 'categories_section', // Add a default or your own section
+		'priority' => 20,
+		'input_attrs' => array(
+            'min' => '1', 'step' => '1',
+          ),
+	) );
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
