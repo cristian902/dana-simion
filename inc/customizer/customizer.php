@@ -159,6 +159,36 @@ function danasimion_customize_register( $wp_customize ) {
             'min' => '1', 'step' => '1',
           ),
 	) );
+
+	$wp_customize->add_section( 'contact_button_section' , array(
+		'title'    => esc_html__( 'Contact button section', 'danasimion' ),
+		'panel'    => 'frontpage_sections',
+		'priority' => 15,
+	) );
+
+	$wp_customize->add_setting( 'contact_button_label', array(
+		'default' => esc_html__('Get in touch', 'danasimion'),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'contact_button_label', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Button label', 'danasimion' ),
+		'section' => 'contact_button_section', // Add a default or your own section
+		'priority' => 15,
+	) );
+
+	$wp_customize->add_setting( 'contact_button_link', array(
+		'default' =>  home_url( '/contact' ),
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'contact_button_link', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Button link', 'danasimion' ),
+		'section' => 'contact_button_section', // Add a default or your own section
+		'priority' => 205,
+	) );
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
