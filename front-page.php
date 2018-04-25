@@ -13,9 +13,7 @@
  */
 
 get_header();
-?>
-<?php
-	get_template_part( 'template-parts/frontpage', 'jumbotron' );
-	get_template_part( 'template-parts/frontpage', 'categories');
-	get_template_part( 'template-parts/frontpage', 'contact-button');
+get_template_part( 'template-parts/frontpage', 'jumbotron' );
+get_template_part( 'template-parts/frontpage', 'categories');
+get_template_part( 'template-parts/frontpage', 'contact-button');
 get_footer();

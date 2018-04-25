@@ -1335,3 +1335,215 @@ footer{
 	color: #63686e;
 	padding-top: 15px;
 }
+
+
+/*--------------------------------------------------------------
+# About timeline
+--------------------------------------------------------------*/
+img
+{
+	vertical-align: middle;
+}
+.img-responsive
+{
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+.img-rounded
+{
+	border-radius: 3px;
+}
+.img-thumbnail
+{
+	background-color: #fff;
+	border: 1px solid #ededf0;
+	border-radius: 3px;
+	display: inline-block;
+	height: auto;
+	line-height: 1.428571429;
+	max-width: 100%;
+	moz-transition: all .2s ease-in-out;
+	o-transition: all .2s ease-in-out;
+	padding: 2px;
+	transition: all .2s ease-in-out;
+	webkit-transition: all .2s ease-in-out;
+}
+.img-circle
+{
+	border-radius: 50%;
+}
+.timeline-centered {
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.timeline-centered:before, .timeline-centered:after {
+	content: " ";
+	display: table;
+}
+
+.timeline-centered:after {
+	clear: both;
+}
+
+.timeline-centered:before, .timeline-centered:after {
+	content: " ";
+	display: table;
+}
+
+.timeline-centered:after {
+	clear: both;
+}
+
+.timeline-centered:before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 2px;
+	background: #61728e;
+	left: 50%;
+	top: 20px;
+	bottom: 20px;
+	margin-left: -18px;
+}
+
+.timeline-centered .timeline-entry {
+	position: relative;
+	width: 50%;
+	float: right;
+	margin-bottom: 0;
+	top: 10px;
+	clear: both;
+}
+
+.timeline-centered .timeline-entry:before, .timeline-centered .timeline-entry:after {
+	content: " ";
+	display: table;
+}
+
+.timeline-centered .timeline-entry:after {
+	clear: both;
+}
+
+.timeline-centered .timeline-entry:before, .timeline-centered .timeline-entry:after {
+	content: " ";
+	display: table;
+}
+
+.timeline-centered .timeline-entry:after {
+	clear: both;
+}
+
+.timeline-centered .timeline-entry.begin {
+	margin-bottom: 0;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner {
+	position: relative;
+	margin-left: -22px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {
+	content: " ";
+	display: table;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner:after {
+	clear: both;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner:before, .timeline-centered .timeline-entry .timeline-entry-inner:after {
+	content: " ";
+	display: table;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner:after {
+	clear: both;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-time {
+	position: absolute;
+	left: -55px;
+	text-align: right;
+	top: -12px;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span {
+	display: block;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:first-child {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-time > span:last-child {
+	font-size: 20px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-icon {
+	background: #000;
+	color: #737881;
+	display: block;
+	width: 10px;
+	height: 10px;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	text-align: center;
+	-moz-box-shadow: 0 0 0 2px #fff;
+	-webkit-box-shadow: 0 0 0 2px #fff;
+	box-shadow: 0 0 0 2px #fff;
+	line-height: 40px;
+	font-size: 15px;
+	float: left;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label {
+	position: relative;
+	margin-left: 25px;
+	top: -20px;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2, .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p {
+	color: #737881;
+	font-family: "Noto Sans",sans-serif;
+	font-size: 12px;
+	margin: 0;
+	line-height: 1.428571429;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label p + p {
+	margin-top: 15px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 a {
+	color: #303641;
+}
+
+.timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {
+	-webkit-opacity: .6;
+	-moz-opacity: .6;
+	opacity: .6;
+	-ms-filter: alpha(opacity=60);
+	filter: alpha(opacity=60);
+}
