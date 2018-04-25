@@ -8,25 +8,26 @@
  *
  * @package danasimion
  */
-
+$footer_logo = get_theme_mod('footer_logo', get_template_directory_uri() . '/inc/images/DS-Logo-copy.png');
+$footer_copyright = get_theme_mod('footer_copyright', esc_html__('Copyright 2018 - All rights reserved', 'danasimion') );
 ?>
 
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'danasimion' ) ); ?>">
-				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'danasimion' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'danasimion' ), 'danasimion', '<a href="http://underscores.me/">Underscores.me</a>' );
-				?>
-		</div><!-- .site-info -->
+        <div class="container">
+            <div class="site-info">
+                <?php
+                if( !empty($footer_logo) ) { ?>
+                    <img src="<?php echo esc_url( $footer_logo ); ?>" class="footer-logo">
+	                <?php
+                }
+                if( !empty($footer_copyright) ) { ?>
+                    <p class="footer-copyright"><?php echo wp_kses_post($footer_copyright); ?></p>
+	                <?php
+                }?>
+            </div><!-- .site-info -->
+        </div>
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

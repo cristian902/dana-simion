@@ -1320,3 +1320,18 @@ a.contact-button:visited{
 .contact-button:hover{
 	color: #fff;
 }
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+footer{
+	padding: 25px 0;
+}
+.site-info{
+	text-align: center;
+}
+.footer-copyright{
+	font-size: 14px;
+	color: #63686e;
+	padding-top: 15px;
+}

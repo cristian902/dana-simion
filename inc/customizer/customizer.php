@@ -32,10 +32,34 @@ function danasimion_customize_register( $wp_customize ) {
 		) );
 	}
 
+	/**
+	 * Remove unused controls
+	 */
+	$controls_to_remove = array(
+		'background_image',
+		'background_color',
+	);
+	foreach ($controls_to_remove as $control_name ){
+		$control_to_remove  = $wp_customize->get_control($control_name);
+		if( !empty( $control_to_remove ) ){
+			$wp_customize->remove_control($control_name);
+		}
+	}
+
+	$sections_to_remove = array(
+		'colors',
+		'background_image'
+	);
+	foreach ($sections_to_remove as $section_name ){
+		$section_to_remove = $wp_customize->get_section($section_name);
+		if( !empty( $section_to_remove ) ){
+			$wp_customize->remove_section($section_name);
+		}
+	}
 
 	$wp_customize->add_panel( 'header_settings', array(
 		'title' => esc_html__('Header','danasimion'),
-		'priority' => 10,
+		'priority' => 25,
 	) );
 
 	$wp_customize->add_section( 'nav_contact' , array(
@@ -111,7 +135,7 @@ function danasimion_customize_register( $wp_customize ) {
 
 	$wp_customize->add_panel( 'frontpage_sections', array(
 		'title' => esc_html__('Frontpage sections','danasimion'),
-		'priority' => 15,
+		'priority' => 20,
 	) );
 
 	$wp_customize->add_section( 'categories_section' , array(
@@ -189,6 +213,40 @@ function danasimion_customize_register( $wp_customize ) {
 		'section' => 'contact_button_section', // Add a default or your own section
 		'priority' => 205,
 	) );
+
+	$wp_customize->add_section( 'footer_content' , array(
+		'title'    => esc_html__( 'Footer', 'danasimion' ),
+		'priority' => 30,
+	) );
+
+	$wp_customize->add_setting( 'footer_copyright', array(
+		'default' => esc_html__('Copyright 2018 - All rights reserved', 'danasimion'),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'footer_copyright', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Copyright', 'danasimion' ),
+		'section' => 'footer_content', // Add a default or your own section
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_setting( 'footer_logo', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'default' => get_template_directory_uri() . '/inc/images/DS-Logo-copy.png'
+	));
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'footer_logo',
+			array(
+				'label'      => esc_html__( 'Footer logo', 'danasimion' ),
+				'section'    => 'section',
+				'priority' => 15,
+			)
+		)
+	);
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
