@@ -43,77 +43,22 @@ function media_upload(button_class) {
 }
 
 /********************************************
- *** Generate unique id ***
- *********************************************/
-function customizer_repeater_uniqid(prefix, more_entropy) {
-    'use strict';
-    if (typeof prefix === 'undefined') {
-        prefix = '';
-    }
-
-    var retId;
-    var php_js;
-    var formatSeed = function (seed, reqWidth) {
-        seed = parseInt(seed, 10)
-            .toString(16); // to hex str
-        if (reqWidth < seed.length) { // so long we split
-            return seed.slice(seed.length - reqWidth);
-        }
-        if (reqWidth > seed.length) { // so short we pad
-            return new Array(1 + (reqWidth - seed.length))
-                .join('0') + seed;
-        }
-        return seed;
-    };
-
-    // BEGIN REDUNDANT
-    if (!php_js) {
-        php_js = {};
-    }
-    // END REDUNDANT
-    if (!php_js.uniqidSeed) { // init seed with big random int
-        php_js.uniqidSeed = Math.floor(Math.random() * 0x75bcd15);
-    }
-    php_js.uniqidSeed++;
-
-    retId = prefix; // start with prefix, add current milliseconds hex string
-    retId += formatSeed(parseInt(new Date()
-        .getTime() / 1000, 10), 8);
-    retId += formatSeed(php_js.uniqidSeed, 5); // add seed hex string
-    if (more_entropy) {
-        // for more entropy we add a float lower to 10
-        retId += (Math.random() * 10)
-            .toFixed(8)
-            .toString();
-    }
-
-    return retId;
-}
-
-
-/********************************************
  *** General Repeater ***
  *********************************************/
 function customizer_repeater_refresh_social_icons(th) {
     'use strict';
     var icons_repeater_values = [];
     th.find('.customizer-repeater-social-repeater-container').each(function () {
-        var icon = jQuery(this).find('.icp').val();
         var link = jQuery(this).find('.customizer-repeater-social-repeater-link').val();
-        var id = jQuery(this).find('.customizer-repeater-social-repeater-id').val();
+        var title = jQuery(this).find('.customizer-repeater-social-repeater-title').val();
+        var subtitle = jQuery(this).find('.customizer-repeater-social-repeater-subtitle').val();
 
-        if (!id) {
-            id = 'customizer-repeater-social-repeater-' + customizer_repeater_uniqid();
-            jQuery(this).find('.customizer-repeater-social-repeater-id').val(id);
-        }
+        icons_repeater_values.push({
+            'link': link,
+            'title': title,
+            'subtitle': subtitle,
+        });
 
-        if (icon !== '' && link !== '') {
-            icons_repeater_values.push({
-                'icon': icon,
-                'link': link,
-                'id': id
-            });
-        }
     });
 
     th.find('.social-repeater-socials-repeater-colector').val(JSON.stringify(icons_repeater_values));
@@ -128,43 +73,83 @@ function customizer_repeater_refresh_general_control_values() {
         var th = jQuery(this);
         th.find('.customizer-repeater-general-control-repeater-container').each(function () {
 
-            var icon_value = jQuery(this).find('.icp').val();
-            var text = jQuery(this).find('.customizer-repeater-text-control').val();
-            var link = jQuery(this).find('.customizer-repeater-link-control').val();
-            var text2 = jQuery(this).find('.customizer-repeater-text2-control').val();
-            var link2 = jQuery(this).find('.customizer-repeater-link2-control').val();
-            var color = jQuery(this).find('input.customizer-repeater-color-control').val();
-            var color2 = jQuery(this).find('input.customizer-repeater-color2-control').val();
-            var image_url = jQuery(this).find('.custom-media-url').val();
-            var choice = jQuery(this).find('.customizer-repeater-image-choice').val();
-            var title = jQuery(this).find('.customizer-repeater-title-control').val();
-            var subtitle = jQuery(this).find('.customizer-repeater-subtitle-control').val();
-            var id = jQuery(this).find('.social-repeater-box-id').val();
-            if (!id) {
-                id = 'social-repeater-' + customizer_repeater_uniqid();
-                jQuery(this).find('.social-repeater-box-id').val(id);
-            }
-            var social_repeater = jQuery(this).find('.social-repeater-socials-repeater-colector').val();
-            var shortcode = jQuery(this).find('.customizer-repeater-shortcode-control').val();
+            var result_object = {};
 
-            if (text !== '' || image_url !== '' || title !== '' || subtitle !== '' || icon_value !== '' || link !== '' || choice !== '' || social_repeater !== '' || shortcode !== '' || color !== '') {
-                values.push({
-                    'icon_value': (choice === 'customizer_repeater_none' ? '' : icon_value),
-                    'color': color,
-                    'color2': color2,
-                    'text': escapeHtml(text),
-                    'link': link,
-                    'text2': escapeHtml(text2),
-                    'link2': link2,
-                    'image_url': (choice === 'customizer_repeater_none' ? '' : image_url),
-                    'choice': choice,
-                    'title': escapeHtml(title),
-                    'subtitle': escapeHtml(subtitle),
-                    'social_repeater': escapeHtml(social_repeater),
-                    'id': id,
-                    'shortcode': escapeHtml(shortcode)
-                });
+            var choice = jQuery(this).find('.customizer-repeater-image-choice').val();
+            if( typeof choice !== 'undefined' && choice !== ''){
+                result_object.choice = choice;
             }
+
+            var icon_value = jQuery(this).find('.icp').val();
+            if(icon_value!=='' && icon_value!=='undefined'){
+                if( choice === 'customizer_repeater_none' ){
+                    result_object.icon_value = '';
+                } else {
+                    result_object.icon_value = icon_value;
+                }
+            }
+
+            var text = jQuery(this).find('.customizer-repeater-text-control').val();
+            if( typeof text !== 'undefined' && text !== ''){
+                result_object.text = escapeHtml(text);
+            }
+
+            var link = jQuery(this).find('.customizer-repeater-link-control').val();
+            if( typeof link !== 'undefined' && link !== ''){
+                result_object.link = link;
+            }
+
+            var text2 = jQuery(this).find('.customizer-repeater-text2-control').val();
+            if( typeof text2 !== 'undefined' && text2 !== ''){
+                result_object.text2 = escapeHtml(text2);
+            }
+
+            var link2 = jQuery(this).find('.customizer-repeater-link2-control').val();
+            if( typeof link2 !== 'undefined' && link2 !== ''){
+                result_object.link2 = link2;
+            }
+
+            var color = jQuery(this).find('input.customizer-repeater-color-control').val();
+            if( typeof color !== 'undefined' && color !== ''){
+                result_object.color = color;
+            }
+
+            var color2 = jQuery(this).find('input.customizer-repeater-color2-control').val();
+            if( typeof color2 !== 'undefined' && color2 !== ''){
+                result_object.color = color2;
+            }
+
+            var image_url = jQuery(this).find('.custom-media-url').val();
+            if(image_url!=='' && image_url!=='undefined'){
+                if( choice === 'customizer_repeater_none' ){
+                    result_object.image_url = '';
+                } else {
+                    result_object.image_url = image_url;
+                }
+            }
+
+            var title = jQuery(this).find('.customizer-repeater-title-control').val();
+            if( typeof title !== 'undefined' && title !== ''){
+                result_object.title = escapeHtml(title);
+            }
+
+            var subtitle = jQuery(this).find('.customizer-repeater-subtitle-control').val();
+            if( typeof subtitle !== 'undefined' && subtitle !== ''){
+                result_object.subtitle = escapeHtml(subtitle);
+            }
+
+            var social_repeater = jQuery(this).find('.social-repeater-socials-repeater-colector').val();
+            if( typeof social_repeater !== 'undefined' && social_repeater !== ''){
+                result_object.social_repeater = social_repeater;
+            }
+
+            var shortcode = jQuery(this).find('.customizer-repeater-shortcode-control').val();
+            if( typeof shortcode !== 'undefined' && shortcode !== ''){
+                result_object.shortcode = escapeHtml(shortcode);
+            }
+
+            values.push(result_object);
+
 
         });
         th.find('.customizer-repeater-colector').val(JSON.stringify(values));
@@ -234,7 +219,6 @@ jQuery(document).ready(function () {
      */
     theme_conrols.on('click', '.customizer-repeater-new-field', function () {
         var th = jQuery(this).parent();
-        var id = 'customizer-repeater-' + customizer_repeater_uniqid();
         if (typeof th !== 'undefined') {
             /* Clone the first box*/
             var field = th.find('.customizer-repeater-general-control-repeater-container:first').clone( true, true );
@@ -262,6 +246,8 @@ jQuery(document).ready(function () {
 
                 field.find('.customizer-repeater-social-repeater').find('.customizer-repeater-social-repeater-container').not(':first').remove();
                 field.find('.customizer-repeater-social-repeater-link').val('');
+                field.find('.customizer-repeater-social-repeater-title').val('');
+                field.find('.customizer-repeater-social-repeater-subtitle').val('');
                 field.find('.social-repeater-socials-repeater-colector').val('');
 
                 /*Remove value from icon field*/
@@ -279,9 +265,6 @@ jQuery(document).ready(function () {
                 /*Remove value from link field*/
                 field.find('.customizer-repeater-link2-control').val('');
 
-                /*Set box id*/
-                field.find('.social-repeater-box-id').val(id);
-
                 /*Remove value from media field*/
                 field.find('.custom-media-url').val('');
 
@@ -290,11 +273,11 @@ jQuery(document).ready(function () {
 
 
                 /*Remove value from color field*/
-                field.find('div.customizer-repeater-color-control .wp-picker-container').replaceWith('<input type="text" class="customizer-repeater-color-control ' + id + '">');
+                field.find('div.customizer-repeater-color-control .wp-picker-container').replaceWith('<input type="text" class="customizer-repeater-color-control">');
                 field.find('input.customizer-repeater-color-control').wpColorPicker(color_options);
 
 
-                field.find('div.customizer-repeater-color2-control .wp-picker-container').replaceWith('<input type="text" class="customizer-repeater-color2-control ' + id + '">');
+                field.find('div.customizer-repeater-color2-control .wp-picker-container').replaceWith('<input type="text" class="customizer-repeater-color2-control">');
                 field.find('input.customizer-repeater-color2-control').wpColorPicker(color_options);
 
                 // field.find('.customize-control-notifications-container').remove();
@@ -375,15 +358,14 @@ jQuery(document).ready(function () {
     theme_conrols.on('click', '.social-repeater-add-social-item', function (event) {
         event.preventDefault();
         var th = jQuery(this).parent();
-        var id = 'customizer-repeater-social-repeater-' + customizer_repeater_uniqid();
         if (typeof th !== 'undefined') {
             var field = th.find('.customizer-repeater-social-repeater-container:first').clone( true, true );
             if (typeof field !== 'undefined') {
-                field.find( '.icp' ).val('');
-                field.find( '.input-group-addon' ).find('.fa').attr('class','fa');
+
                 field.find('.social-repeater-remove-social-item').show();
                 field.find('.customizer-repeater-social-repeater-link').val('');
-                field.find('.customizer-repeater-social-repeater-id').val(id);
+                field.find('.customizer-repeater-social-repeater-title').val('');
+                field.find('.customizer-repeater-social-repeater-subtitle').val('');
                 th.find('.customizer-repeater-social-repeater-container:first').parent().append(field);
             }
         }
@@ -406,9 +388,16 @@ jQuery(document).ready(function () {
         return false;
     });
 
-    theme_conrols.on('change', '.customizer-repeater-social-repeater-container .icp', function (event) {
+    theme_conrols.on('keyup', '.customizer-repeater-social-repeater-title', function (event) {
         event.preventDefault();
-        var repeater = jQuery(this).parent().parent().parent();
+        var repeater = jQuery(this).parent().parent();
+        customizer_repeater_refresh_social_icons(repeater);
+        return false;
+    });
+
+    theme_conrols.on('keyup', '.customizer-repeater-social-repeater-subtitle', function (event) {
+        event.preventDefault();
+        var repeater = jQuery(this).parent().parent();
         customizer_repeater_refresh_social_icons(repeater);
         return false;
     });

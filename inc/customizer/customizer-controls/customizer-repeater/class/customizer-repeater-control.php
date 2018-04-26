@@ -29,12 +29,12 @@ class Customizer_Repeater extends WP_Customize_Control {
 	public function __construct( $manager, $id, $args = array() ) {
 		parent::__construct( $manager, $id, $args );
 		/*Get options from customizer.php*/
-		$this->add_field_label = esc_html__( 'Add new field', 'your-textdomain' );
+		$this->add_field_label = esc_html__( 'Add new field', 'danasimion' );
 		if ( ! empty( $args['add_field_label'] ) ) {
 			$this->add_field_label = $args['add_field_label'];
 		}
 
-		$this->boxtitle = esc_html__( 'Customizer Repeater', 'your-textdomain' );
+		$this->boxtitle = esc_html__( 'Customizer Repeater', 'danasimion' );
 		if ( ! empty ( $args['item_name'] ) ) {
 			$this->boxtitle = $args['item_name'];
 		} elseif ( ! empty( $this->label ) ) {
@@ -237,7 +237,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 						}
 						if($this->customizer_repeater_color_control == true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','your-textdomain' ), $this->id, 'customizer_repeater_color_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','danasimion' ), $this->id, 'customizer_repeater_color_control' ),
 								'class' => 'customizer-repeater-color-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color_control' ),
 								'sanitize_callback' => 'sanitize_hex_color',
@@ -246,7 +246,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 						}
 						if($this->customizer_repeater_color2_control == true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','your-textdomain' ), $this->id, 'customizer_repeater_color2_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','danasimion' ), $this->id, 'customizer_repeater_color2_control' ),
 								'class' => 'customizer-repeater-color2-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color2_control' ),
 								'sanitize_callback' => 'sanitize_hex_color'
@@ -254,28 +254,28 @@ class Customizer_Repeater extends WP_Customize_Control {
 						}
 						if($this->customizer_repeater_title_control==true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Title','your-textdomain' ), $this->id, 'customizer_repeater_title_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Title','danasimion' ), $this->id, 'customizer_repeater_title_control' ),
 								'class' => 'customizer-repeater-title-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_title_control' ),
 							), $title);
 						}
 						if($this->customizer_repeater_subtitle_control==true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Subtitle','your-textdomain' ), $this->id, 'customizer_repeater_subtitle_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Subtitle','danasimion' ), $this->id, 'customizer_repeater_subtitle_control' ),
 								'class' => 'customizer-repeater-subtitle-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_subtitle_control' ),
 							), $subtitle);
 						}
 						if($this->customizer_repeater_text_control==true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','your-textdomain' ), $this->id, 'customizer_repeater_text_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','danasimion' ), $this->id, 'customizer_repeater_text_control' ),
 								'class' => 'customizer-repeater-text-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', 'textarea', $this->id, 'customizer_repeater_text_control' ),
 							), $text);
 						}
 						if($this->customizer_repeater_link_control){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','your-textdomain' ), $this->id, 'customizer_repeater_link_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','danasimion' ), $this->id, 'customizer_repeater_link_control' ),
 								'class' => 'customizer-repeater-link-control',
 								'sanitize_callback' => 'esc_url_raw',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link_control' ),
@@ -283,14 +283,14 @@ class Customizer_Repeater extends WP_Customize_Control {
 						}
 						if($this->customizer_repeater_text2_control==true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','your-textdomain' ), $this->id, 'customizer_repeater_text2_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','danasimion' ), $this->id, 'customizer_repeater_text2_control' ),
 								'class' => 'customizer-repeater-text2-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', 'textarea', $this->id, 'customizer_repeater_text2_control' ),
 							), $text2);
 						}
 						if($this->customizer_repeater_link2_control){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','your-textdomain' ), $this->id, 'customizer_repeater_link2_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','danasimion' ), $this->id, 'customizer_repeater_link2_control' ),
 								'class' => 'customizer-repeater-link2-control',
 								'sanitize_callback' => 'esc_url_raw',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link2_control' ),
@@ -298,7 +298,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 						}
 						if($this->customizer_repeater_shortcode_control==true){
 							$this->input_control(array(
-								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','your-textdomain' ), $this->id, 'customizer_repeater_shortcode_control' ),
+								'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','danasimion' ), $this->id, 'customizer_repeater_shortcode_control' ),
 								'class' => 'customizer-repeater-shortcode-control',
 								'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_shortcode_control' ),
 							), $shortcode);
@@ -313,7 +313,7 @@ class Customizer_Repeater extends WP_Customize_Control {
                         <button type="button" class="social-repeater-general-control-remove-field" <?php if ( $it == 0 ) {
 							echo 'style="display:none;"';
 						} ?>>
-							<?php esc_html_e( 'Delete field', 'your-textdomain' ); ?>
+							<?php esc_html_e( 'Delete field', 'danasimion' ); ?>
                         </button>
 
                     </div>
@@ -340,7 +340,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 					}
 					if($this->customizer_repeater_color_control==true){
 						$this->input_control(array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','your-textdomain' ), $this->id, 'customizer_repeater_color_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','danasimion' ), $this->id, 'customizer_repeater_color_control' ),
 							'class' => 'customizer-repeater-color-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color_control' ),
 							'sanitize_callback' => 'sanitize_hex_color'
@@ -348,7 +348,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 					}
 					if($this->customizer_repeater_color2_control==true){
 						$this->input_control(array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','your-textdomain' ), $this->id, 'customizer_repeater_color2_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Color','danasimion' ), $this->id, 'customizer_repeater_color2_control' ),
 							'class' => 'customizer-repeater-color2-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', 'color', $this->id, 'customizer_repeater_color2_control' ),
 							'sanitize_callback' => 'sanitize_hex_color'
@@ -356,49 +356,49 @@ class Customizer_Repeater extends WP_Customize_Control {
 					}
 					if ( $this->customizer_repeater_title_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Title','your-textdomain' ), $this->id, 'customizer_repeater_title_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Title','danasimion' ), $this->id, 'customizer_repeater_title_control' ),
 							'class' => 'customizer-repeater-title-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_title_control' ),
 						) );
 					}
 					if ( $this->customizer_repeater_subtitle_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Subtitle','your-textdomain' ), $this->id, 'customizer_repeater_subtitle_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Subtitle','danasimion' ), $this->id, 'customizer_repeater_subtitle_control' ),
 							'class' => 'customizer-repeater-subtitle-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_subtitle_control' ),
 						) );
 					}
 					if ( $this->customizer_repeater_text_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','your-textdomain' ), $this->id, 'customizer_repeater_text_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','danasimion' ), $this->id, 'customizer_repeater_text_control' ),
 							'class' => 'customizer-repeater-text-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', 'textarea', $this->id, 'customizer_repeater_text_control' ),
 						) );
 					}
 					if ( $this->customizer_repeater_link_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','your-textdomain' ), $this->id, 'customizer_repeater_link_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','danasimion' ), $this->id, 'customizer_repeater_link_control' ),
 							'class' => 'customizer-repeater-link-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link_control' ),
 						) );
 					}
 					if ( $this->customizer_repeater_text2_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','your-textdomain' ), $this->id, 'customizer_repeater_text2_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Text','danasimion' ), $this->id, 'customizer_repeater_text2_control' ),
 							'class' => 'customizer-repeater-text2-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', 'textarea', $this->id, 'customizer_repeater_text2_control' ),
 						) );
 					}
 					if ( $this->customizer_repeater_link2_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','your-textdomain' ), $this->id, 'customizer_repeater_link2_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Link','danasimion' ), $this->id, 'customizer_repeater_link2_control' ),
 							'class' => 'customizer-repeater-link2-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_link2_control' ),
 						) );
 					}
 					if ( $this->customizer_repeater_shortcode_control == true ) {
 						$this->input_control( array(
-							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','your-textdomain' ), $this->id, 'customizer_repeater_shortcode_control' ),
+							'label' => apply_filters('repeater_input_labels_filter', esc_html__( 'Shortcode','danasimion' ), $this->id, 'customizer_repeater_shortcode_control' ),
 							'class' => 'customizer-repeater-shortcode-control',
 							'type'  => apply_filters('customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_shortcode_control' ),
 						) );
@@ -408,7 +408,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 					} ?>
                     <input type="hidden" class="social-repeater-box-id">
                     <button type="button" class="social-repeater-general-control-remove-field button" style="display:none;">
-						<?php esc_html_e( 'Delete field', 'your-textdomain' ); ?>
+						<?php esc_html_e( 'Delete field', 'danasimion' ); ?>
                     </button>
                 </div>
             </div>
@@ -449,13 +449,13 @@ class Customizer_Repeater extends WP_Customize_Control {
 		?>
         <div class="social-repeater-general-control-icon" <?php if( $show === 'customizer_repeater_image' || $show === 'customizer_repeater_none' ) { echo 'style="display:none;"'; } ?>>
             <span class="customize-control-title">
-                <?php esc_html_e('Icon','your-textdomain'); ?>
+                <?php esc_html_e('Icon','danasimion'); ?>
             </span>
             <span class="description customize-control-description">
                 <?php
                 echo sprintf(
-	                esc_html__( 'Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'your-textdomain' ),
-	                sprintf( '<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__( 'http://fontawesome.io/icons/', 'your-textdomain' ) )
+	                esc_html__( 'Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'danasimion' ),
+	                sprintf( '<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__( 'http://fontawesome.io/icons/', 'danasimion' ) )
                 ); ?>
             </span>
             <div class="input-group icp-container">
@@ -472,22 +472,22 @@ class Customizer_Repeater extends WP_Customize_Control {
 	private function image_control($value = '', $show = ''){ ?>
         <div class="customizer-repeater-image-control" <?php if( $show === 'customizer_repeater_icon' || $show === 'customizer_repeater_none' || empty( $show ) ) { echo 'style="display:none;"'; } ?>>
             <span class="customize-control-title">
-                <?php esc_html_e('Image','your-textdomain')?>
+                <?php esc_html_e('Image','danasimion')?>
             </span>
             <input type="text" class="widefat custom-media-url" value="<?php echo esc_attr( $value ); ?>">
-            <input type="button" class="button button-secondary customizer-repeater-custom-media-button" value="<?php esc_attr_e( 'Upload Image','your-textdomain' ); ?>" />
+            <input type="button" class="button button-secondary customizer-repeater-custom-media-button" value="<?php esc_attr_e( 'Upload Image','danasimion' ); ?>" />
         </div>
 		<?php
 	}
 
 	private function icon_type_choice($value='customizer_repeater_icon'){ ?>
         <span class="customize-control-title">
-            <?php esc_html_e('Image type','your-textdomain');?>
+            <?php esc_html_e('Image type','danasimion');?>
         </span>
         <select class="customizer-repeater-image-choice">
-            <option value="customizer_repeater_icon" <?php selected($value,'customizer_repeater_icon');?>><?php esc_html_e('Icon','your-textdomain'); ?></option>
-            <option value="customizer_repeater_image" <?php selected($value,'customizer_repeater_image');?>><?php esc_html_e('Image','your-textdomain'); ?></option>
-            <option value="customizer_repeater_none" <?php selected($value,'customizer_repeater_none');?>><?php esc_html_e('None','your-textdomain'); ?></option>
+            <option value="customizer_repeater_icon" <?php selected($value,'customizer_repeater_icon');?>><?php esc_html_e('Icon','danasimion'); ?></option>
+            <option value="customizer_repeater_image" <?php selected($value,'customizer_repeater_image');?>><?php esc_html_e('Image','danasimion'); ?></option>
+            <option value="customizer_repeater_none" <?php selected($value,'customizer_repeater_none');?>><?php esc_html_e('None','danasimion'); ?></option>
         </select>
 		<?php
 	}
@@ -495,13 +495,10 @@ class Customizer_Repeater extends WP_Customize_Control {
 	private function repeater_control($value = ''){
 		$social_repeater = array();
 		$show_del        = 0; ?>
-        <span class="customize-control-title"><?php esc_html_e( 'Social icons', 'your-textdomain' ); ?></span>
+        <span class="customize-control-title"><?php esc_html_e( 'Year events', 'danasimion' ); ?></span>
 		<?php
 		echo '<span class="description customize-control-description">';
-		echo sprintf(
-			esc_html__( 'Note: Some icons may not be displayed here. You can see the full list of icons at %1$s.', 'your-textdomain' ),
-			sprintf( '<a href="http://fontawesome.io/icons/" rel="nofollow">%s</a>', esc_html__( 'http://fontawesome.io/icons/', 'your-textdomain' ) )
-		);
+		echo esc_html__( 'Add here events that happened in this year', 'danasimion' );
 		echo '</span>';
 		if(!empty($value)) {
 			$social_repeater = json_decode( html_entity_decode( $value ), true );
@@ -509,21 +506,21 @@ class Customizer_Repeater extends WP_Customize_Control {
 		if ( ( count( $social_repeater ) == 1 && '' === $social_repeater[0] ) || empty( $social_repeater ) ) { ?>
             <div class="customizer-repeater-social-repeater">
                 <div class="customizer-repeater-social-repeater-container">
-                    <div class="customizer-repeater-rc input-group icp-container">
-                        <input data-placement="bottomRight" class="icp icp-auto" value="<?php if(!empty($value)) { echo esc_attr( $value ); } ?>" type="text">
-                        <span class="input-group-addon"></span>
-                    </div>
-					<?php get_template_part( $this->customizer_icon_container ); ?>
                     <input type="text" class="customizer-repeater-social-repeater-link"
-                           placeholder="<?php esc_attr_e( 'Link', 'your-textdomain' ); ?>">
+                           placeholder="<?php esc_attr_e( 'Link', 'danasimion' ); ?>">
+                    <input type="text" class="customizer-repeater-social-repeater-title"
+                           placeholder="<?php esc_attr_e( 'Title', 'danasimion' ); ?>">
+                    <input type="text" class="customizer-repeater-social-repeater-subtitle"
+                           placeholder="<?php esc_attr_e( 'Subtitle', 'danasimion' ); ?>">
+
                     <input type="hidden" class="customizer-repeater-social-repeater-id" value="">
                     <button class="social-repeater-remove-social-item" style="display:none">
-						<?php esc_html_e( 'Remove Icon', 'your-textdomain' ); ?>
+						<?php esc_html_e( 'Remove Event', 'danasimion' ); ?>
                     </button>
                 </div>
                 <input type="hidden" id="social-repeater-socials-repeater-colector" class="social-repeater-socials-repeater-colector" value=""/>
             </div>
-            <button class="social-repeater-add-social-item button-secondary"><?php esc_html_e( 'Add Icon', 'your-textdomain' ); ?></button>
+            <button class="social-repeater-add-social-item button-secondary"><?php esc_html_e( 'Add Event', 'danasimion' ); ?></button>
 			<?php
 		} else { ?>
             <div class="customizer-repeater-social-repeater">
@@ -531,16 +528,22 @@ class Customizer_Repeater extends WP_Customize_Control {
 				foreach ( $social_repeater as $social_icon ) {
 					$show_del ++; ?>
                     <div class="customizer-repeater-social-repeater-container">
-                        <div class="customizer-repeater-rc input-group icp-container">
-                            <input data-placement="bottomRight" class="icp icp-auto" value="<?php if( !empty($social_icon['icon']) ) { echo esc_attr( $social_icon['icon'] ); } ?>" type="text">
-                            <span class="input-group-addon"><i class="fa <?php echo esc_attr( $social_icon['icon'] ); ?>"></i></span>
-                        </div>
-						<?php get_template_part( $this->customizer_icon_container ); ?>
                         <input type="text" class="customizer-repeater-social-repeater-link"
-                               placeholder="<?php esc_attr_e( 'Link', 'your-textdomain' ); ?>"
+                               placeholder="<?php esc_attr_e( 'Link', 'danasimion' ); ?>"
                                value="<?php if ( ! empty( $social_icon['link'] ) ) {
 							       echo esc_url( $social_icon['link'] );
 						       } ?>">
+                        <input type="text" class="customizer-repeater-social-repeater-title"
+                               placeholder="<?php esc_attr_e( 'Title', 'danasimion' ); ?>"
+                               value="<?php if ( ! empty( $social_icon['title'] ) ) {
+	                               echo esc_attr( $social_icon['title'] );
+                               } ?>">
+                        <input type="text" class="customizer-repeater-social-repeater-subtitle"
+                               placeholder="<?php esc_attr_e( 'Subtitle', 'danasimion' ); ?>"
+                               value="<?php if ( ! empty( $social_icon['subtitle'] ) ) {
+	                               echo esc_attr( $social_icon['subtitle'] );
+                               } ?>">
+
                         <input type="hidden" class="customizer-repeater-social-repeater-id"
                                value="<?php if ( ! empty( $social_icon['id'] ) ) {
 							       echo esc_attr( $social_icon['id'] );
@@ -548,7 +551,7 @@ class Customizer_Repeater extends WP_Customize_Control {
                         <button class="social-repeater-remove-social-item"
                                 style="<?php if ( $show_del == 1 ) {
 							        echo "display:none";
-						        } ?>"><?php esc_html_e( 'Remove Icon', 'your-textdomain' ); ?></button>
+						        } ?>"><?php esc_html_e( 'Remove Icon', 'danasimion' ); ?></button>
                     </div>
 					<?php
 				} ?>
@@ -556,7 +559,7 @@ class Customizer_Repeater extends WP_Customize_Control {
                        class="social-repeater-socials-repeater-colector"
                        value="<?php echo esc_textarea( html_entity_decode( $value ) ); ?>" />
             </div>
-            <button class="social-repeater-add-social-item button-secondary"><?php esc_html_e( 'Add Icon', 'your-textdomain' ); ?></button>
+            <button class="social-repeater-add-social-item button-secondary"><?php esc_html_e( 'Add Event', 'danasimion' ); ?></button>
 			<?php
 		}
 	}

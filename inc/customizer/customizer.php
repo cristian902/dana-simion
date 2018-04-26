@@ -59,7 +59,7 @@ function danasimion_customize_register( $wp_customize ) {
 
 	$wp_customize->add_panel( 'header_settings', array(
 		'title' => esc_html__('Header','danasimion'),
-		'priority' => 25,
+		'priority' => 30,
 	) );
 
 	$wp_customize->add_section( 'nav_contact' , array(
@@ -73,7 +73,7 @@ function danasimion_customize_register( $wp_customize ) {
 	));
 
 	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'header_contact_content', array(
-		'label'   => esc_html__('Contact box','customizer-repeater'),
+		'label'   => esc_html__('Contact box','danasimion'),
 		'section' => 'nav_contact',
 		'priority' => 1,
 		'customizer_repeater_icon_control' => true,
@@ -216,7 +216,7 @@ function danasimion_customize_register( $wp_customize ) {
 
 	$wp_customize->add_section( 'footer_content' , array(
 		'title'    => esc_html__( 'Footer', 'danasimion' ),
-		'priority' => 30,
+		'priority' => 35,
 	) );
 
 	$wp_customize->add_setting( 'footer_copyright', array(
@@ -247,6 +247,25 @@ function danasimion_customize_register( $wp_customize ) {
 			)
 		)
 	);
+
+	$wp_customize->add_section( 'about_content' , array(
+		'title'    => esc_html__( 'About', 'danasimion' ),
+		'priority' => 35,
+	) );
+
+	$wp_customize->add_setting( 'about_timeline', array(
+		'sanitize_callback' => 'customizer_repeater_sanitize'
+	));
+
+	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'about_timeline', array(
+		'label'   => esc_html__('Timeline','danasimion'),
+		'section' => 'about_content',
+		'priority' => 1,
+		'item_name' => esc_html__('Year','danasimion'),
+		'customizer_repeater_repeater_control' => true,
+		'customizer_repeater_link_control' => true,
+		'customizer_repeater_title_control' => true,
+	) ) );
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
