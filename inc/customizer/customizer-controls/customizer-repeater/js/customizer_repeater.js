@@ -91,7 +91,7 @@ function customizer_repeater_refresh_general_control_values() {
 
             var text = jQuery(this).find('.customizer-repeater-text-control').val();
             if( typeof text !== 'undefined' && text !== ''){
-                result_object.text = escapeHtml(text);
+                result_object.text = text;
             }
 
             var link = jQuery(this).find('.customizer-repeater-link-control').val();
@@ -101,7 +101,7 @@ function customizer_repeater_refresh_general_control_values() {
 
             var text2 = jQuery(this).find('.customizer-repeater-text2-control').val();
             if( typeof text2 !== 'undefined' && text2 !== ''){
-                result_object.text2 = escapeHtml(text2);
+                result_object.text2 = text2;
             }
 
             var link2 = jQuery(this).find('.customizer-repeater-link2-control').val();

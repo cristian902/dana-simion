@@ -248,9 +248,59 @@ function danasimion_customize_register( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_section( 'about_content' , array(
+	$wp_customize->add_panel( 'about_content' , array(
 		'title'    => esc_html__( 'About', 'danasimion' ),
 		'priority' => 35,
+	) );
+
+	$wp_customize->add_section( 'about_education' , array(
+		'title'    => esc_html__( 'Education', 'danasimion' ),
+		'priority' => 5,
+		'panel'    => 'about_content'
+	) );
+
+	$wp_customize->add_setting( 'education_title', array(
+		'default' => esc_html__('Education', 'danasimion'),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'education_title', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Title', 'danasimion' ),
+		'section' => 'about_education', // Add a default or your own section
+		'priority' => 10,
+	) );
+
+	$wp_customize->add_setting( 'education_content', array(
+		'sanitize_callback' => 'customizer_repeater_sanitize'
+	));
+
+	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'education_content', array(
+		'label'   => esc_html__('Content','danasimion'),
+		'section' => 'about_education',
+		'priority' => 15,
+		'customizer_repeater_text_control' => true,
+		'customizer_repeater_text2_control' => true,
+	) ) );
+
+
+
+	$wp_customize->add_section( 'about_timeline' , array(
+		'title'    => esc_html__( 'Timeline', 'danasimion' ),
+		'priority' => 10,
+		'panel'    => 'about_content'
+	) );
+
+	$wp_customize->add_setting( 'timeline_title', array(
+		'default' => esc_html__('Exhibitions', 'danasimion'),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'timeline_title', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Title', 'danasimion' ),
+		'section' => 'about_timeline', // Add a default or your own section
+		'priority' => 10,
 	) );
 
 	$wp_customize->add_setting( 'about_timeline', array(
@@ -259,13 +309,14 @@ function danasimion_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'about_timeline', array(
 		'label'   => esc_html__('Timeline','danasimion'),
-		'section' => 'about_content',
+		'section' => 'about_timeline',
 		'priority' => 1,
 		'item_name' => esc_html__('Year','danasimion'),
 		'customizer_repeater_repeater_control' => true,
-		'customizer_repeater_link_control' => true,
 		'customizer_repeater_title_control' => true,
 	) ) );
+
+
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
