@@ -250,7 +250,7 @@ function danasimion_customize_register( $wp_customize ) {
 
 	$wp_customize->add_panel( 'about_content' , array(
 		'title'    => esc_html__( 'About', 'danasimion' ),
-		'priority' => 35,
+		'priority' => 25,
 	) );
 
 	$wp_customize->add_section( 'about_education' , array(
@@ -310,7 +310,7 @@ function danasimion_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'about_timeline', array(
 		'label'   => esc_html__('Timeline','danasimion'),
 		'section' => 'about_timeline',
-		'priority' => 1,
+		'priority' => 15,
 		'item_name' => esc_html__('Year','danasimion'),
 		'customizer_repeater_repeater_control' => true,
 		'customizer_repeater_title_control' => true,
