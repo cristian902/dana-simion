@@ -1,11 +1,16 @@
 <?php
 $education_title = get_theme_mod('education_title', esc_html__('Education','danasimion'));
 $education_content = get_theme_mod( 'education_content');
+$about_avatar = get_theme_mod('about_avatar',get_template_directory_uri() . '/inc/images/dana_profil.jpg');
 ?>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-4 col-sm-12 avatar-section">
-            <div class="avatar-wrapper"></div>
+            <?php if( !empty($about_avatar)) { ?>
+                <div class="avatar-wrapper"></div>
+	            <?php
+            }
+            ?>
 		</div>
 		<div class="col-lg-8 col-sm-12 education-section">
 			<?php

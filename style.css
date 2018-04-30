@@ -1609,6 +1609,7 @@ img
 }
 .timeline-section{
 	padding: 90px 20px;
+	padding-top: 0;
 }
 .timeline-section .section-title,
 .education-section .section-title{
