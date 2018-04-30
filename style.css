@@ -1039,9 +1039,13 @@ object {
 .navbar{
 	padding-top: 40px;
 	padding-bottom: 40px;
+	background: #fff;
 }
 
 @media (min-width: 992px) {
+	.navbar{
+		background: transparent;
+	}
 	.menu-item.active a {
 		position: relative;
 	}
@@ -1340,8 +1344,23 @@ footer{
 # About Education
 --------------------------------------------------------------*/
 .education-section{
-	padding: 90px 0;
+	padding: 90px 20px;
+	margin-left: 0;
+		max-width: 100%;
 }
+@media (min-width: 767px) {
+	.education-section{
+		margin-left: 33.3333%;
+		max-width: 66.6666%;
+	}
+}
+@media (min-width: 992px) {
+	.education-section{
+		margin: 0;
+	max-width: 66.6666%;
+	}
+}
+
 
 .education-entry{
 	margin-bottom:20px;
@@ -1589,10 +1608,75 @@ img
 	text-transform: uppercase;
 }
 .timeline-section{
-	padding-bottom: 90px;
+	padding: 90px 20px;
 }
 .timeline-section .section-title,
 .education-section .section-title{
 	font-size: 24px;
 	margin-bottom: 40px;
+}
+
+/*--------------------------------------------------------------
+# Avatar section
+--------------------------------------------------------------*/
+.about-background{
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	height: 600px;
+	padding: 0;
+	display: none;
+}
+@media (min-width: 992px) {
+	.about-background{
+		display: block;
+	}
+
+	.page-template-page-templatestemplate-about-php .site-branding {
+		filter: invert(100%);
+	}
+}
+
+@media (min-width: 500px) {
+	.about-background img{
+		max-width: 95%;
+	}
+}
+
+@media (min-width: 600px) {
+	.about-background img {
+		max-width: 90%;
+	}
+}
+
+@media (min-width: 700px) {
+	.about-background img {
+		max-width: 80%;
+	}
+}
+@media (min-width: 767px) {
+	.about-background img {
+		max-width: 100%;
+	}
+}
+
+@media (min-width: 900px) {
+	.about-background img {
+		max-width: 85%;
+	}
+}
+
+.avatar-wrapper{
+	height: 280px;
+	width: 280px;
+	border: 10px solid #fff;
+	border-radius: 50%;
+	background-size: cover;
+	margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+	.avatar-wrapper{
+		margin: 0;
+	}
 }

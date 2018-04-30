@@ -230,3 +230,16 @@ function danasinion_display_header_contact(){
 
 }
 add_action('before_header_ul','danasinion_display_header_contact');
+
+/**
+ * Inline style.
+ */
+function danasimion_inline_style(){
+	$style = '';
+	$about_avatar = get_theme_mod('about_avatar',get_template_directory_uri() . '/inc/images/dana_profil.jpg');
+	if( !empty($about_avatar) ){
+		$style .= '.avatar-wrapper{background-image: url("'.esc_url($about_avatar).'");}';
+	}
+	wp_add_inline_style('danasimion-style',$style);
+}
+add_action( 'wp_enqueue_scripts', 'danasimion_inline_style' );

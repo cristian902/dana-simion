@@ -259,6 +259,23 @@ function danasimion_customize_register( $wp_customize ) {
 		'panel'    => 'about_content'
 	) );
 
+	$wp_customize->add_setting( 'about_avatar', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'default' => get_template_directory_uri() . '/inc/images/dana_profil.jpg'
+	));
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'about_avatar',
+			array(
+				'label'      => esc_html__( 'Avatar', 'danasimion' ),
+				'section'    => 'about_education',
+				'priority' => 5,
+			)
+		)
+	);
+
 	$wp_customize->add_setting( 'education_title', array(
 		'default' => esc_html__('Education', 'danasimion'),
 		'sanitize_callback' => 'wp_kses_post',

@@ -4,10 +4,10 @@ $education_content = get_theme_mod( 'education_content');
 ?>
 <div class="container">
 	<div class="row">
-		<div class="col-md-4 col-sm-12 avatar-section">
-
+		<div class="col-lg-4 col-sm-12 avatar-section">
+            <div class="avatar-wrapper"></div>
 		</div>
-		<div class="col-md-8 col-sm-12 education-section">
+		<div class="col-lg-8 col-sm-12 education-section">
 			<?php
 			if( !empty($education_title)){ ?>
 				<h2 class="section-title">
