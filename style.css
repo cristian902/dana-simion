@@ -1228,7 +1228,7 @@ object {
 	border: none;
 }
 
-.card-body{
+.card-body.card-centered{
 	text-align: center;
 }
 
@@ -1680,4 +1680,42 @@ img
 	.avatar-wrapper{
 		margin: 0;
 	}
+}
+
+/*--------------------------------------------------------------
+# Category grid
+--------------------------------------------------------------*/
+.category-grid{
+	padding-top: 155px;
+}
+.nopadding {
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.category-item{
+	padding-bottom: 50px;
+}
+.category-item .card-title{
+	font-size: 18px;
+	padding-top: 15px;
+	margin: 0;
+}
+
+.category-item .card-text{
+	margin: 0;
+}
+
+.navigation{
+	width: 100%;
+}
+.navigation ul{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+.navigation ul li{
+	display: inline-block;
+	border: 1px solid #737881;
+	padding: 1px 6px;
 }

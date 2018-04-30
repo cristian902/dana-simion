@@ -59,7 +59,7 @@ $categories_section_number = get_theme_mod( 'categories_section_number', 3);
                         <?php
                     }
                     ?>
-                    <div class="card-body">
+                    <div class="card-body card-centered">
                         <?php
                         if( !empty($category->name) ){
                             ?>
