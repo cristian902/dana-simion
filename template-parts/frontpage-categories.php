@@ -1,5 +1,9 @@
 <?php
-$categories = get_categories();
+$args = array("hide_empty" => 0,
+              "type"      => "post",
+              "orderby"   => "name",
+              "order"     => "ASC" );
+$categories = get_categories($args);
 if( empty($categories) || count($categories) === 1  ){
     return;
 }
