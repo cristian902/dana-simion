@@ -11,6 +11,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 	private $customizer_icon_container = '';
 	private $allowed_html = array();
 	public $customizer_repeater_image_control = false;
+	public $customizer_repeater_image2_control = false;
 	public $customizer_repeater_icon_control = false;
 	public $customizer_repeater_color_control = false;
 	public $customizer_repeater_color2_control = false;
@@ -43,6 +44,10 @@ class Customizer_Repeater extends WP_Customize_Control {
 
 		if ( ! empty( $args['customizer_repeater_image_control'] ) ) {
 			$this->customizer_repeater_image_control = $args['customizer_repeater_image_control'];
+		}
+
+		if ( ! empty( $args['customizer_repeater_image2_control'] ) ) {
+			$this->customizer_repeater_image2_control = $args['customizer_repeater_image2_control'];
 		}
 
 		if ( ! empty( $args['customizer_repeater_icon_control'] ) ) {
@@ -232,6 +237,9 @@ class Customizer_Repeater extends WP_Customize_Control {
 						if($this->customizer_repeater_image_control == true){
 							$this->image_control($image_url, $choice);
 						}
+						if($this->customizer_repeater_image2_control == true){
+							$this->image2_control($image_url);
+						}
 						if($this->customizer_repeater_icon_control == true){
 							$this->icon_picker_control($icon_value, $choice);
 						}
@@ -334,6 +342,9 @@ class Customizer_Repeater extends WP_Customize_Control {
 					}
 					if ( $this->customizer_repeater_image_control == true ) {
 						$this->image_control();
+					}
+					if ( $this->customizer_repeater_image2_control == true ) {
+						$this->image2_control();
 					}
 					if ( $this->customizer_repeater_icon_control == true ) {
 						$this->icon_picker_control();
@@ -470,11 +481,22 @@ class Customizer_Repeater extends WP_Customize_Control {
 	}
 
 	private function image_control($value = '', $show = ''){ ?>
-        <div class="customizer-repeater-image-control" <?php if( $show === 'customizer_repeater_icon' || $show === 'customizer_repeater_none' || empty( $show ) ) { echo 'style="display:none;"'; } ?>>
+        <div class="customizer-repeater-image-control" <?php if( $show === 'customizer_repeater_icon' || $show === 'customizer_repeater_none') { echo 'style="display:none;"'; } ?>>
             <span class="customize-control-title">
                 <?php esc_html_e('Image','danasimion')?>
             </span>
             <input type="text" class="widefat custom-media-url" value="<?php echo esc_attr( $value ); ?>">
+            <input type="button" class="button button-secondary customizer-repeater-custom-media-button" value="<?php esc_attr_e( 'Upload Image','danasimion' ); ?>" />
+        </div>
+		<?php
+	}
+
+	private function image2_control($value = ''){ ?>
+        <div class="customizer-repeater-image2-control">
+            <span class="customize-control-title">
+                <?php esc_html_e('Background','danasimion')?>
+            </span>
+            <input type="text" class="widefat custom-media2-url" value="<?php echo esc_attr( $value ); ?>">
             <input type="button" class="button button-secondary customizer-repeater-custom-media-button" value="<?php esc_attr_e( 'Upload Image','danasimion' ); ?>" />
         </div>
 		<?php

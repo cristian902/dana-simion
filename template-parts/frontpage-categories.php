@@ -1,10 +1,12 @@
 <?php
-$args = array("hide_empty" => 0,
-              "type"      => "post",
-              "orderby"   => "name",
-              "order"     => "ASC" );
-$categories = get_categories($args);
-if( empty($categories) || count($categories) === 1  ){
+$terms = get_terms( array(
+	'taxonomy' => 'categories',
+	'hide_empty' => false,
+    'orderby' => 'name',
+    'order' => 'ASC'
+) );
+
+if( empty($terms) ){
     return;
 }
 
@@ -31,7 +33,7 @@ $categories_section_number = get_theme_mod( 'categories_section_number', 3);
 		<div class="row-centered section-content">
             <?php
             $i = 1;
-            foreach( $categories as $category ){
+            foreach( $terms as $category ){
                 if( $i > $categories_section_number ){
                     break;
                 }
@@ -39,8 +41,8 @@ $categories_section_number = get_theme_mod( 'categories_section_number', 3);
                     continue;
                 }
                 $cat_id = $category->term_id;
-	            $image_id = get_term_meta ( $cat_id, 'category-image-id', true );
-	            $image_url = wp_get_attachment_url( $image_id );
+
+	            $image_url = get_field('category_thumbnail','categories_'.$cat_id);
 	            $link = get_category_link( $cat_id );
 	            $i++;
                 ?>

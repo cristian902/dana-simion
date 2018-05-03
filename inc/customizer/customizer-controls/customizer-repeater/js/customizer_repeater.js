@@ -127,6 +127,10 @@ function customizer_repeater_refresh_general_control_values() {
                     result_object.image_url = image_url;
                 }
             }
+            var image2_url = jQuery(this).find('.custom-media2-url').val();
+            if(image2_url!=='' && image2_url!=='undefined'){
+                result_object.image2_url = image2_url;
+            }
 
             var title = jQuery(this).find('.customizer-repeater-title-control').val();
             if( typeof title !== 'undefined' && title !== ''){
@@ -207,6 +211,11 @@ jQuery(document).ready(function () {
         return false;
     });
 
+    jQuery('.custom-media2-url').on('change', function () {
+        customizer_repeater_refresh_general_control_values();
+        return false;
+    });
+
     var color_options = {
         change: function(event, ui){
             customizer_repeater_refresh_general_control_values();
@@ -267,6 +276,9 @@ jQuery(document).ready(function () {
 
                 /*Remove value from media field*/
                 field.find('.custom-media-url').val('');
+
+                /*Remove value from media field*/
+                field.find('.custom-media2-url').val('');
 
                 /*Remove value from title field*/
                 field.find('.customizer-repeater-title-control').val('');

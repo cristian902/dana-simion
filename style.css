@@ -1136,6 +1136,7 @@ object {
 	background: transparent;
 	color: #fff;
 	margin: 0;
+	padding: 0;
 }
 
 .jumbotron-layers{
@@ -1175,6 +1176,10 @@ object {
 }
 .jumbotron-title, .jumbotron-subtitle {
 	text-transform: uppercase;
+}
+
+.carousel-item{
+	padding: 4rem 0;
 }
 
 /*--------------------------------------------------------------

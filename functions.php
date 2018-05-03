@@ -188,13 +188,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 require get_template_directory() . '/inc/vendors/bootstrap/class-wp-bootstrap-navwalker.php';
 
 /**
- * Load Category thumbnail
- */
-require get_template_directory() . '/inc/vendors/category-thumbnail/class-category-thumbnail.php';
-
-
-
-/**
  * Display header contact boxes before menu.
  */
 function danasinion_display_header_contact(){
@@ -333,41 +326,52 @@ function danasimion_single_post_404( $query ) {
 add_action( 'pre_get_posts', 'danasimion_single_post_404' );
 
 /**
- * Create a custom meta box.
+ * Create custom post type
  */
-function danasimion_meta_box_add() {
-	add_meta_box( 'dimension-meta', 'Image dimension', 'danasimion_meta_box_render', 'post', 'normal', 'high' );
+function danasimion_create_posttype() {
+
+	register_post_type( 'paintings',
+		// CPT Options
+		array(
+			'labels' => array(
+				'name' => esc_html__( 'Paintings','danasimion' ),
+				'singular_name' => esc_html__( 'Painting','danasimion' )
+			),
+			'public' => true,
+			'has_archive' => true,
+			'rewrite' => array('slug' => 'paintings'),
+			'taxonomies' => array( 'categories' ),
+			'supports' => array(
+			    'title',
+                'editor',
+                'excerpt',
+                'author',
+                'thumbnail',
+            ),
+			'menu_icon' => 'dashicons-admin-customizer',
+		)
+	);
 }
-add_action( 'add_meta_boxes', 'danasimion_meta_box_add' );
+add_action( 'init', 'danasimion_create_posttype' );
+
+//hook into the init action and call create_book_taxonomies when it fires
 
 
-function danasimion_meta_box_render( $post )
-{
-	$values = get_post_custom( $post->ID );
-	$text = isset( $values['dimension_meta_box'] ) ? esc_attr( $values['dimension_meta_box'][0] ) : '';
-	// We'll use this nonce field later on when saving.
-	wp_nonce_field( 'meta_box_nonce', 'meta_box_nonce' );
-	?>
-	<p>
-		<input type="text" name="dimension_meta_box" id="dimension_meta_box" value="<?php echo esc_attr($text); ?>" />
-	</p>
-	<?php
-}
+//create a custom taxonomy name it topics for your posts
 
-function danasimion_meta_box_save( $post_id )
-{
-	// Bail if we're doing an auto save
-	if( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
+function danasimion_category_taxonomy() {
 
-	// if our nonce isn't there, or we can't verify it, bail
-	if( !isset( $_POST['meta_box_nonce'] ) || !wp_verify_nonce( $_POST['meta_box_nonce'], 'meta_box_nonce' ) ) return;
-
-	// if our current user can't edit this post, bail
-	if( !current_user_can( 'edit_post' ) ) return;
-
-	// Make sure your data is set before trying to save it
-	if( isset( $_POST['dimension_meta_box'] ) )
-		update_post_meta( $post_id, 'dimension_meta_box', wp_kses_post( $_POST['dimension_meta_box'] ) );
+	register_taxonomy('categories', array('paintings'), array(
+		'hierarchical' => true,
+		'labels' => $labels = array(
+			'name' => esc_html__( 'Categories', 'danasimion' ),
+			'singular_name' => esc_html__( 'Category', 'danasimion' ),
+        ),
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'topic' ),
+	));
 
 }
-add_action( 'save_post', 'danasimion_meta_box_save' );
+add_action( 'init', 'danasimion_category_taxonomy', 0 );
