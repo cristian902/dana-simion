@@ -8,6 +8,9 @@
  */
 
 get_header();
+
+get_template_part('template-parts/category', 'presentation-header')
+
 ?>
 
 	<div id="primary" class="content-area">

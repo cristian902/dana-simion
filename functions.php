@@ -93,6 +93,7 @@ if ( ! function_exists( 'danasimion_setup' ) ) :
 		 * Image sizes
 		 */
 		add_image_size('category-size', 360, 240, true);
+		add_image_size('category-grid-thumb', 65, 65, true);
 	}
 endif;
 add_action( 'after_setup_theme', 'danasimion_setup' );
@@ -370,8 +371,18 @@ function danasimion_category_taxonomy() {
 		'show_ui' => true,
 		'show_admin_column' => true,
 		'query_var' => true,
-		'rewrite' => array( 'slug' => 'topic' ),
+		'rewrite' => array( 'slug' => 'paintings' ),
 	));
 
 }
 add_action( 'init', 'danasimion_category_taxonomy', 0 );
+
+/**
+ * Change posts per page on archive.
+ */
+function danasimion_per_page_archive( $query ) {
+	if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
+		$query->set( 'posts_per_page', -1 );
+	}
+}
+add_action( 'pre_get_posts', 'danasimion_per_page_archive' );

@@ -1178,7 +1178,7 @@ object {
 	text-transform: uppercase;
 }
 
-.carousel-item{
+#frontpage-carousel .carousel-item{
 	padding: 4rem 0;
 	height: 84vh;
 }
@@ -1728,3 +1728,41 @@ img
 	border-radius: 3px;
 	padding: 1px 6px;
 }
+
+/*--------------------------------------------------------------
+# Category presentation header
+--------------------------------------------------------------*/
+
+.paintings-carousel .carousel-item {
+	margin: 0 auto;
+	max-width: 90%;
+}
+
+.categories-header{
+	padding: 70px 0;
+	background-position: center;
+	background-size: cover;
+	height: 1200px;
+}
+
+.paintings-grid .list-inline-item{
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 5px;
+    padding-top: 0;
+}
+
+.paintings-grid .page{
+    display: none;
+}
+.paintings-grid .page.current{
+    display: block;
+	height: 215px;
+}
+
+.paintings-carousel, .paintings-grid{
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+}
+
