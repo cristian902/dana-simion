@@ -356,9 +356,15 @@ function danasimion_customize_register( $wp_customize ) {
 	) ) );
 
 
-	$wp_customize->add_section( 'environment_gallery' , array(
+	$wp_customize->add_panel( 'environment_gallery' , array(
 		'title'    => esc_html__( 'Environment gallery', 'danasimion' ),
 		'priority' => 26,
+	) );
+
+	$wp_customize->add_section( 'environment_backgrounds' , array(
+		'title'    => esc_html__( 'Backgrounds', 'danasimion' ),
+		'priority' => 26,
+		'panel' => 'environment_gallery'
 	) );
 
 	$wp_customize->add_setting( 'environment_backgrounds', array(
@@ -367,10 +373,40 @@ function danasimion_customize_register( $wp_customize ) {
 
 	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'environment_backgrounds', array(
 		'label'   => esc_html__('Environment backgrounds','danasimion'),
-		'section' => 'environment_gallery',
+		'section' => 'environment_backgrounds',
 		'priority' => 15,
 		'customizer_repeater_image_control' => true,
 	) ) );
+
+	$wp_customize->add_section( 'environment_button' , array(
+		'title'    => esc_html__( 'Button', 'danasimion' ),
+		'priority' => 30,
+		'panel' => 'environment_gallery'
+	) );
+
+	$wp_customize->add_setting( 'environment_button_label', array(
+		'default' => esc_html__('Get in touch', 'danasimion'),
+		'sanitize_callback' => 'wp_kses_post',
+	) );
+
+	$wp_customize->add_control( 'environment_button_label', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Button label', 'danasimion' ),
+		'section' => 'environment_button', // Add a default or your own section
+		'priority' => 15,
+	) );
+
+	$wp_customize->add_setting( 'environment_button_link', array(
+		'default' =>  home_url( '/contact' ),
+		'sanitize_callback' => 'esc_url_raw',
+	) );
+
+	$wp_customize->add_control( 'environment_button_link', array(
+		'type' => 'text',
+		'label' => esc_html__( 'Button link', 'danasimion' ),
+		'section' => 'environment_button', // Add a default or your own section
+		'priority' => 205,
+	) );
 
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );

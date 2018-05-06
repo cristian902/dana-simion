@@ -1743,6 +1743,7 @@ img
 	background-position: center;
 	background-size: cover;
 	height: 900px;
+	position: relative;
 }
 
 .paintings-grid .list-inline-item{
@@ -1812,4 +1813,12 @@ img
 	padding: 5px;
 	padding-top: 0;
 	cursor: pointer;
+}
+
+.environment-header-action{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	background: rgba(0,0,0,0.4);
+	padding: 30px 0;
 }

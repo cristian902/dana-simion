@@ -131,6 +131,23 @@ if( !empty($disable_header) && $disable_header[0] === 'Yes'){
             ?>
     </div>
 
+    <?php
+    $environment_button_label = get_theme_mod('environment_button_label', esc_html__('Get in touch', 'danasimion'));
+    $environment_button_link = get_theme_mod( 'environment_button_link', home_url( '/contact' ) );
+    if( !empty($environment_button_label) && !empty($environment_button_link)) {
+	    ?>
+        <section class="contact-button-section environment-header-action">
+            <div class="container">
+                <div class="row-centered section-content">
+                    <div class="col-md-4 col-centered">
+                        <a href="<?php echo esc_url($environment_button_link); ?>" class="btn btn-red contact-button"><?php echo wp_kses_post($environment_button_label); ?></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+	    <?php
+    }
+    ?>
 </div>
 
 
