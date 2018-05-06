@@ -386,3 +386,9 @@ function danasimion_per_page_archive( $query ) {
 	}
 }
 add_action( 'pre_get_posts', 'danasimion_per_page_archive' );
+
+function danasimion_get_image_id($image_url) {
+	global $wpdb;
+	$attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
+	return $attachment[0];
+}

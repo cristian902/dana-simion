@@ -4,6 +4,7 @@
             this.initLightbox();
             this.paginatePostsGridNext();
             this.paginatePostsGridPrev();
+            this.handleEnvironment();
         },
         'initLightbox': function () {
             $('.category-item').click(function(){
@@ -34,6 +35,14 @@
                     $('.page-'+prevPage).addClass('current');
                     paintingsGrid.data('current-page', prevPage);
                 }
+            });
+        },
+        'handleEnvironment': function () {
+            $('.environment-selector').on('click', function () {
+               var url = $(this).data('full-url');
+               if( url !== ''){
+                   $('.categories-header').css('background-image','url('+url+')');
+               }
             });
         }
     };

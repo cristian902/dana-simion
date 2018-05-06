@@ -1735,14 +1735,14 @@ img
 
 .paintings-carousel .carousel-item {
 	margin: 0 auto;
-	max-width: 90%;
+	max-width: 340px;
 }
 
 .categories-header{
 	padding: 70px 0;
 	background-position: center;
 	background-size: cover;
-	height: 1200px;
+	height: 900px;
 }
 
 .paintings-grid .list-inline-item{
@@ -1758,6 +1758,7 @@ img
 .paintings-grid .page.current{
     display: block;
 	height: 215px;
+	width: 195px;
 }
 
 .paintings-carousel, .paintings-grid{
@@ -1766,3 +1767,49 @@ img
     padding: 0;
 }
 
+.grid-pagination{
+	margin: 0;
+	list-style-type: none;
+	padding: 0;
+	width: 100%;
+	margin-top: 10px;
+}
+.grid-pagination .page-item{
+	padding: 5px;
+
+}
+
+.grid-pagination .page-item button{
+	border-radius: 0;
+	background: #000;
+	color: #fff;
+	height: 30px;
+	padding: 5px 39px;
+	border: none;
+}
+
+.grid-pagination .page-item.prev{
+	float: left;
+}
+.grid-pagination .page-item.next{
+	float: right;
+	text-align: right;
+}
+
+.paintings-grid, .environment-grid{
+	display: none;
+}
+@media (min-width: 992px) {
+	.paintings-grid,
+	.environment-grid{
+		display: inline-block;
+	}
+}
+
+.environment-grid .item{
+	margin: 0;
+	margin-bottom: 5px;
+	padding: 5px;
+	padding-top: 0;
+	cursor: pointer;
+}

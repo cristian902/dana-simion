@@ -356,6 +356,22 @@ function danasimion_customize_register( $wp_customize ) {
 	) ) );
 
 
+	$wp_customize->add_section( 'environment_gallery' , array(
+		'title'    => esc_html__( 'Environment gallery', 'danasimion' ),
+		'priority' => 26,
+	) );
+
+	$wp_customize->add_setting( 'environment_backgrounds', array(
+		'sanitize_callback' => 'customizer_repeater_sanitize'
+	));
+
+	$wp_customize->add_control( new Customizer_Repeater( $wp_customize, 'environment_backgrounds', array(
+		'label'   => esc_html__('Environment backgrounds','danasimion'),
+		'section' => 'environment_gallery',
+		'priority' => 15,
+		'customizer_repeater_image_control' => true,
+	) ) );
+
 }
 add_action( 'customize_register', 'danasimion_customize_register', 15 );
 
