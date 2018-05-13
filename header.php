@@ -23,6 +23,42 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<header id="masthead" class="site-header">
+        <?php
+        $header_contact_content = get_theme_mod('header_contact_content');
+        $header_contact_content = !empty($header_contact_content) ? json_decode($header_contact_content):'';
+        if( !empty($header_contact_content)){ ?>
+            <div class="top-bar">
+                <div class="container">
+                    <div class="row justify-content-end text-right">
+                        <?php
+                        $col_width = count($header_contact_content) > 4 ? 4 : 12/count($header_contact_content);
+                        foreach ($header_contact_content as $contact_item){
+	                        $icon = $contact_item->icon_value;
+	                        $text = $contact_item->text;
+	                        if( !empty($text) ){ ?>
+                                <div class="col-auto text-right">
+                                    <p class="top-bar-contact-item">
+                                    <?php
+                                    if( !empty($icon)){
+                                        echo '<i class="fa '.esc_attr($icon).'"></i>';
+                                    }
+                                    echo wp_kses_post($text);
+                                    ?>
+                                    </p>
+                                </div>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?php
+        }
+
+        ?>
+
+
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <div class="site-branding">
@@ -52,7 +88,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <?php
-                $header_contact_content = get_theme_mod('header_contact_content');
                 $container_class = 'collapse navbar-collapse';
                 if( !empty( $header_contact_content ) ){
                     $container_class .= ' has-content-above';

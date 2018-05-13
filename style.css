@@ -1012,6 +1012,7 @@ object {
 }
 
 .navbar-light .navbar-nav .nav-link{
+	transition: color 0.3s ease;
 	color: #000;
 }
 
@@ -1126,6 +1127,27 @@ object {
 
 }
 
+.top-bar{
+	padding: 10px 0;
+	border-bottom: 1px solid;
+}
+
+.top-bar p{
+	margin: 0;
+}
+
+.top-bar i{
+	padding-right: 5px;
+}
+
+@media (min-width: 992px) {
+	.top-bar{
+		display: none;
+	}
+}
+
+
+
 /*--------------------------------------------------------------
 # Jumbotron
 --------------------------------------------------------------*/
@@ -1172,7 +1194,7 @@ object {
 }
 
 .jumbotron-content{
-	padding: 90px;
+	padding: 100px 0;
 }
 .jumbotron-title, .jumbotron-subtitle {
 	text-transform: uppercase;
@@ -1180,7 +1202,6 @@ object {
 
 #frontpage-carousel .carousel-item{
 	padding: 4rem 0;
-	height: 84vh;
 }
 
 /*--------------------------------------------------------------
@@ -1312,13 +1333,16 @@ object {
 }
 
 .btn-red{
+	transition: background-color 0.5s ease;
 	background-color: #c40c0c;
 	color: #fff;
 }
 
+.btn-red:hover{
+	background-color: #8c0c0c;
+}
+
 .contact-button{
-	width: 100%;
-	max-width: 320px;
 	height: 60px;
 	font-size: 30px;
 }
@@ -1634,7 +1658,7 @@ img
 	padding: 0;
 	display: none;
 }
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
 	.about-background{
 		display: block;
 	}

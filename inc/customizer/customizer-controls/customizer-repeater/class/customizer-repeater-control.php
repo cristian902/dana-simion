@@ -196,6 +196,9 @@ class Customizer_Repeater extends WP_Customize_Control {
 						if(!empty($icon->image_url)){
 							$image_url = $icon->image_url;
 						}
+						if(!empty($icon->image2_url)){
+							$image2_url = $icon->image2_url;
+						}
 						if(!empty($icon->icon_value)){
 							$icon_value = $icon->icon_value;
 						}
@@ -238,7 +241,7 @@ class Customizer_Repeater extends WP_Customize_Control {
 							$this->image_control($image_url, $choice);
 						}
 						if($this->customizer_repeater_image2_control == true){
-							$this->image2_control($image_url);
+							$this->image2_control($image2_url);
 						}
 						if($this->customizer_repeater_icon_control == true){
 							$this->icon_picker_control($icon_value, $choice);
