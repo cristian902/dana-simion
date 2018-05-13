@@ -4,8 +4,8 @@ $pid = get_the_ID();
 $image = get_the_post_thumbnail_url($pid, 'category-size');
 $image_full = get_the_post_thumbnail_url($pid, 'full');
 $title = get_the_title();
-$excerpt = get_the_excerpt();
-$dimension = get_post_meta( $pid, 'dimension_meta_box' );
+$paintings_dimension = get_field('paintings_dimension', $pid);
+$materials = get_field( 'materials', $pid );
 ?>
 <div class="card col-md-4 category-item" data-toggle="lightbox" data-gallery="gallery">
 	<?php
@@ -22,14 +22,14 @@ $dimension = get_post_meta( $pid, 'dimension_meta_box' );
 			<?php
 		}
 
-		if( !empty($dimension)){ ?>
-			<p class="card-text"><?php echo wp_kses_post($dimension[0]);?></p>
+		if( !empty($paintings_dimension)){ ?>
+			<p class="card-text"><?php echo wp_kses_post($paintings_dimension);?></p>
 		    <?php
         }
 
-		if( !empty($excerpt)) {
+		if( !empty($materials)) {
 			?>
-			<p class="card-text"><?php echo wp_kses_post($excerpt);?></p>
+			<p class="card-text"><?php echo wp_kses_post($materials);?></p>
 			<?php
 		}
 

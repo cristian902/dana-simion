@@ -24,6 +24,9 @@ if( !empty($disable_header) && $disable_header[0] === 'Yes'){
 
     ?>
     <div id="cat-carousel" class="carousel slide">
+        <div class="container">
+            <div class="row justify-content-md-center">
+
         <div class="paintings-carousel carousel-inner offset-md-4 col-md-4">
             <?php
             if ( have_posts() ) {
@@ -45,8 +48,17 @@ if( !empty($disable_header) && $disable_header[0] === 'Yes'){
             }
             ?>
         </div>
-        <div class="offset-md-1 paintings-grid" data-max-page="<?php echo esc_attr($max_page); ?>" data-current-page="1">
 
+
+
+
+
+
+
+
+        <div class="offset-md-1 col-md-3 paintings-grid"
+             data-max-page="<?php echo esc_attr($max_page); ?>"
+             data-current-page="1">
             <?php
             if ( have_posts() ) {
                 $post_index = 1;
@@ -57,14 +69,16 @@ if( !empty($disable_header) && $disable_header[0] === 'Yes'){
                     $post_thumb = get_the_post_thumbnail_url($id,'category-grid-thumb');
                     if( $post_index % 9 === 1 ){ ?>
                         <div class="page page-<?php echo esc_attr(floor($post_index/9) + 1); if($is_first_page){ echo esc_attr(' current');}?>">
+                        <div class="container">
                         <?php
                     }
 
                     if( $post_index % 3 === 1 ){?>
-                        <div class="row">
+                        <div class="row justify-content-md-left">
                         <?php
                     } ?>
-                    <div class="list-inline-item col-md-4">
+
+                    <div class="col-auto grid-item">
                         <a id="carousel-selector-<?php echo esc_attr($id); ?>" class="" data-slide-to="<?php echo esc_attr($post_index-1); ?>" data-target="#cat-carousel">
                             <img src="<?php echo esc_url($post_thumb); ?>" class="img-fluid">
                         </a>
@@ -76,6 +90,7 @@ if( !empty($disable_header) && $disable_header[0] === 'Yes'){
                     }
                     if( $post_index % 9 === 0 || $post_index === $number_of_posts){ ?>
                         </div>
+                        </div>
                         <?php
                     }
                     $is_first_page = false;
@@ -84,51 +99,66 @@ if( !empty($disable_header) && $disable_header[0] === 'Yes'){
             }
             if( $max_page > 1 ) {
                 ?>
-                <nav class="row">
-                    <ul class="grid-pagination">
-                        <li class="page-item prev col-md-6"><button class="prev"><</button></li>
-                        <li class="page-item next col-md-6"><button class="next">></button></li>
-                    </ul>
-                </nav>
+                <div class="container">
+                    <nav class="row justify-content-md-left">
+                        <ul class="grid-pagination">
+                            <li class="page-item prev col-md-6"><button class="prev"><</button></li>
+                            <li class="page-item next col-md-6"><button class="next">></button></li>
+                        </ul>
+                    </nav>
+                    <div class="environment-grid">
+		                <?php
+		                $environment_backgrounds = get_theme_mod('environment_backgrounds');
+		                if( !empty($environment_backgrounds)){
+		                $environment_backgrounds_decoded = json_decode($environment_backgrounds);
+                        $post_index = 1;
+                        $number_of_posts = count($environment_backgrounds_decoded);
+                        foreach ( $environment_backgrounds_decoded as $image){
+                            $image_url = $image->image_url;
+                            $image_id = danasimion_get_image_id($image_url);
+                            $small_img = wp_get_attachment_image_src($image_id, 'category-grid-thumb')[0];
+                            if( $post_index % 3 === 1 ){?>
+                                <div class="row justify-content-md-left">
+                                <?php
+                            }
+                            ?>
+                            <div class="col-auto grid-item">
+                                <a class="environment-selector" data-full-url="<?php echo esc_url($image_url); ?>">
+                                    <img src="<?php echo esc_url($small_img); ?>" class="img-fluid">
+                                </a>
+                            </div>
+                            <?php
+                            if( $post_index % 3 === 0 || $post_index === $number_of_posts){?>
+                                </div>
+                                <?php
+                            }
+                            $post_index++;
+                        } ?>
+                    </div>
+                </div>
                 <?php
             }?>
         </div>
-        <?php
-        $environment_backgrounds = get_theme_mod('environment_backgrounds');
-        if( !empty($environment_backgrounds)){
-	        $environment_backgrounds_decoded = json_decode($environment_backgrounds);
-            ?>
-            <div class="offset-md-9 environment-grid">
-                <?php
-                $post_index = 1;
-                $number_of_posts = count($environment_backgrounds_decoded);
-                foreach ( $environment_backgrounds_decoded as $image){
-                    $image_url = $image->image_url;
-                    $image_id = danasimion_get_image_id($image_url);
-                    $small_img = wp_get_attachment_image_src($image_id, 'category-grid-thumb')[0];
-                    if( $post_index % 3 === 1 ){?>
-                    <div class="row">
-                        <?php
-		            }
-                    ?>
-                    <div class="col-md-4 item">
-                        <a class="environment-selector" data-full-url="<?php echo esc_url($image_url); ?>">
-                            <img src="<?php echo esc_url($small_img); ?>" class="img-fluid">
-                        </a>
-                    </div>
-                    <?php
-	                if( $post_index % 3 === 0 || $post_index === $number_of_posts){?>
-                        </div>
-		                <?php
-	                }
-	                $post_index++;
-                }
-                ?>
-            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <?php
 
         }
             ?>
+            </div>
+        </div>
     </div>
 
     <?php
