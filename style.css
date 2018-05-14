@@ -1756,16 +1756,6 @@ img
 /*--------------------------------------------------------------
 # Category grid
 --------------------------------------------------------------*/
-.category-grid{
-	padding-top: 50px;
-}
-
-@media (min-width: 992px) {
-	.category-grid{
-		padding-top: 155px;
-	}
-}
-
 .nopadding {
 	padding: 0 !important;
 	margin: 0 !important;
@@ -1910,4 +1900,10 @@ img
 
 .content-area{
 	padding: 100px 0;
+	width: 100%;
+}
+
+.no-results,.not-found{
+	text-align: center;
+	width: 100%;
 }
