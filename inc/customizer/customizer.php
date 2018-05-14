@@ -270,10 +270,70 @@ function danasimion_customize_register( $wp_customize ) {
 		)
 	);
 
+
+
+	$wp_customize->add_panel( 'contact_content' , array(
+		'title'    => esc_html__( 'Contact', 'danasimion' ),
+		'priority' => 24,
+	) );
+
+	$wp_customize->add_section( 'contact_background' , array(
+		'title'    => esc_html__( 'Background', 'danasimion' ),
+		'priority' => 1,
+		'panel'    => 'contact_content'
+	) );
+
+	$wp_customize->add_setting( 'contact_background', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'default' => get_template_directory_uri() . '/inc/images/Rectangle-5.png'
+	));
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'contact_background',
+			array(
+				'label'      => esc_html__( 'Background', 'danasimion' ),
+				'section'    => 'contact_background',
+				'priority' => 5,
+			)
+		)
+	);
+
+
+
+
+
+
+
+
 	$wp_customize->add_panel( 'about_content' , array(
 		'title'    => esc_html__( 'About', 'danasimion' ),
 		'priority' => 25,
 	) );
+
+	$wp_customize->add_section( 'about_background' , array(
+		'title'    => esc_html__( 'Background', 'danasimion' ),
+		'priority' => 1,
+		'panel'    => 'about_content'
+	) );
+
+	$wp_customize->add_setting( 'about_background', array(
+		'sanitize_callback' => 'esc_url_raw',
+		'default' => get_template_directory_uri() . '/inc/images/Rectangle-5-copy.png'
+	));
+
+	$wp_customize->add_control(
+		new WP_Customize_Image_Control(
+			$wp_customize,
+			'about_background',
+			array(
+				'label'      => esc_html__( 'Background', 'danasimion' ),
+				'section'    => 'about_background',
+				'priority' => 5,
+			)
+		)
+	);
 
 	$wp_customize->add_section( 'about_education' , array(
 		'title'    => esc_html__( 'Education', 'danasimion' ),

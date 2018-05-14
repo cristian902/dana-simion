@@ -2,10 +2,14 @@
 /**
  * Template Name: Contact
  */
-get_header(); ?>
-<div class="col-md-6 about-background">
-    <img src="<?php echo get_template_directory_uri() . '/inc/images/Rectangle-5.png' ?>">
-</div>
+get_header();
+$contact_background = get_theme_mod('contact_background',get_template_directory_uri() . '/inc/images/Rectangle-5.png');
+if( !empty($contact_background)){?>
+    <div class="col-md-6 about-background">
+        <img src="<?php echo esc_url($contact_background); ?>">
+    </div>
+    <?php
+} ?>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main">
 
