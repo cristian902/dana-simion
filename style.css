@@ -1907,3 +1907,7 @@ img
 	text-align: center;
 	width: 100%;
 }
+
+.modal-content{
+	padding: 30px;
+}

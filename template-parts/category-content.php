@@ -36,18 +36,30 @@ $materials = get_field( 'materials', $pid );
 		?>
 	</div>
     <div tabindex="-1" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
-                <?php if( !empty($title)){ ?>
-                <div class="modal-header">
-                    <h3 class="modal-title"><?php echo wp_kses_post($title); ?></h3>
+                <div class="row">
+	                <?php if( !empty($image_full)) { ?>
+                        <div class="col-12 col-lg-6">
+                            <img src="<?php echo esc_url($image_full); ?>">
+                        </div>
+	                <?php } ?>
+                    <?php if( !empty($title) ){ ?>
+                    <div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div class="modal-header">
+                                <h3 class="modal-title"><?php echo wp_kses_post($title); ?></h3>
+                            </div>
+                        </div>
+                        <div class="row modal-text">
+                            <?php the_content(); ?>
+                        </div>
+                    </div>
+                    <?php } ?>
+
                 </div>
-                <?php } ?>
-                <?php if( !empty($image_full)) { ?>
-                <div class="modal-body">
-                    <img src="<?php echo esc_url($image_full); ?>">
-                </div>
-                <?php } ?>
+
+
                 <div class="modal-footer">
                     <button class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
