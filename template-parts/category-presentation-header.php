@@ -34,7 +34,6 @@ if ( $header_type === 'Slider'){ ?>
 		        $pid = get_the_ID();
 		        $image = get_the_post_thumbnail_url($pid, 'category-slider'); ?>
                 <div class="col-4 text-center image-in-carousel" style="background-image: url(<?php echo esc_url($image) ?>)">
-<!--                    <img src="--><?php //echo esc_url($image); ?><!--" alt="First slide">-->
                 </div>
 
                 <?php
