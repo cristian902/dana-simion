@@ -158,6 +158,8 @@ function danasimion_customize_register( $wp_customize ) {
 		'customizer_repeater_image2_control' => true,
 		'customizer_repeater_title_control' => true,
 		'customizer_repeater_subtitle_control' => true,
+		'customizer_repeater_text_control' => true,
+		'customizer_repeater_link_control' => true,
 	) ) );
 
 	$wp_customize->add_section( 'categories_section' , array(

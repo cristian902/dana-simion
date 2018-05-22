@@ -1911,3 +1911,37 @@ img
 .modal-content{
 	padding: 30px;
 }
+
+#category-carousel{
+	display: none;
+}
+
+@media (min-width: 992px) {
+	#category-carousel{
+		display: block;
+	}
+}
+#category-carousel .carousel-item{
+	min-height: 300px;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+#category-carousel .carousel-item:after {
+	content:"";
+	display:block;
+	position:absolute;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background:rgba(0,0,0,0.2);
+}
+
+.image-in-carousel{
+	min-height: 350px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	border: 3px solid;
+}

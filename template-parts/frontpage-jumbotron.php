@@ -19,6 +19,8 @@ $slides = count($header_slider_content_decoded);
             $subtitle = $slider_item->subtitle;
             $logo = $slider_item->image_url;
             $background = $slider_item->image2_url;
+            $button_label = $slider_item->text;
+            $button_link = $slider_item->link;
             ?>
             <div class="carousel-item <?php if( $first_slide === true){ echo 'active';} ?>" style="background-image: url(<?php echo esc_url($background); ?>)">
                 <!--            <img class="d-block img-fluid" src="--><?php //echo esc_url($image); ?><!--" alt="First slide">-->
@@ -48,6 +50,13 @@ $slides = count($header_slider_content_decoded);
                         </div>
 			            <?php
 		            }
+
+		            if( !empty($button_label) && !empty($button_link)){ ?>
+                        <a class="btn btn-red" href="<?php echo esc_url($button_link) ?>">
+                            <?php echo wp_kses_post($button_label); ?>
+                        </a>
+                        <?php
+                    }
 		            ?>
                 </div>
             </div>

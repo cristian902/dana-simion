@@ -93,6 +93,7 @@ if ( ! function_exists( 'danasimion_setup' ) ) :
 		 * Image sizes
 		 */
 		add_image_size('category-size', 360, 240, true);
+		add_image_size('category-slider', 350, 350, true);
 		add_image_size('category-grid-thumb', 65, 65, true);
 	}
 endif;
